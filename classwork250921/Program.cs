@@ -8,6 +8,18 @@ namespace classwork250921
 {
     class Program
     {
+        enum karts
+        {
+            шестёрка,
+            семёрка,
+            восьмёрка,
+            девятка,
+            десятка,
+            валет,
+            дама,
+            король,
+            туз
+        }
         static void Main(string[] args)
         {
             //1.1
@@ -59,68 +71,47 @@ namespace classwork250921
             //1.3
             Console.WriteLine("\n 1.3 \n Введите номер для недели");
             int day = Convert.ToInt32(Console.ReadLine());
-            if (day==1)
+            switch (day)
             {
-                Console.WriteLine("понедельник");
-            }    
-            if (day==2)
-                {
-                Console.WriteLine("вторник");
+                case 1:
+                    Console.WriteLine("понедельник");
+                    break;
+                case 2:
+                    Console.WriteLine("вторник");
+                    break;
+                case 3:
+                    Console.WriteLine("среда");
+                    break;
+                case 4:
+                    Console.WriteLine("четверг");
+                    break;
+                case 5:
+                    Console.WriteLine("пятница");
+                    break;
+                case 6:
+                    Console.WriteLine("суббота");
+                    break;
+                case 7:
+                    Console.WriteLine("воскресенье");
+                    break;
+                default:
+                    Console.WriteLine("вы ввели неверное значение");
+                    break;
             }
-            if(day==3)
-            {
-                Console.WriteLine("среда");
-            }
-            if (day==4)
-            {
-                Console.WriteLine("четверг");
-            }
-            if (day==5)
-            {
-                Console.WriteLine("пятница");
-            }
-            if (day == 6)
-            {
-                Console.WriteLine("суббота");
-            }
-            if (day == 7) 
-            {
-                Console.WriteLine("воскресенье");
-            }
-            if (day>7)
-            {
-                Console.WriteLine("неподходящее значение");
-            }
+            
 
             //1.4
             Console.WriteLine("1.4");
             try
             {
                 int karta = Convert.ToInt32(Console.ReadLine());
-                if (karta >= 6 && karta <= 14)
+                if (karta < 6 || karta > 14)
                 {
-                    if (karta == 11)
-                    {
-                        Console.WriteLine("валет");
-                    }
-                    if (karta == 12)
-                    {
-                        Console.WriteLine("дама");
-                    }
-                    if (karta==13)
-                    {
-                        Console.WriteLine("король");
-                    }
-                    if (karta==14)
-                    {
-                        Console.WriteLine("туз");
-                    }
-                    Console.WriteLine($"Карта- {karta}");
-
+                    throw new Exception("Вы ввели неправильное число");
                 }
                 else
                 {
-                    throw new Exception("Вы ввели неправильное число");
+                    Console.WriteLine((karts)karta);
                 }
             }
             catch (FormatException error)
@@ -135,9 +126,7 @@ namespace classwork250921
             {
                 Console.WriteLine("блок завершён");
             }
-            
-
-            
+   
             //1.5
             Console.WriteLine("\n 1.5 \n Введите расстояние от Земли 1-10км: ");
             d = Convert.ToInt32(Console.ReadLine());

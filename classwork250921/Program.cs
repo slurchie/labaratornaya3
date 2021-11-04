@@ -8,6 +8,18 @@ namespace classwork250921
 {
     class Program
     {
+        enum Cards
+        {
+            Шестерка = 6,
+            Семерка,
+            Восьмерка,
+            Девятка,
+            Десятка,
+            Валет,
+            Дама,
+            Король,
+            Туз
+        };
         static void Main(string[] args)
         {
             //1.1
@@ -59,85 +71,55 @@ namespace classwork250921
             //1.3
             Console.WriteLine("\n 1.3 \n Введите номер для недели");
             int day = Convert.ToInt32(Console.ReadLine());
-            if (day==1)
+            switch (day)
             {
-                Console.WriteLine("понедельник");
-            }    
-            if (day==2)
-                {
-                Console.WriteLine("вторник");
-            }
-            if(day==3)
-            {
-                Console.WriteLine("среда");
-            }
-            if (day==4)
-            {
-                Console.WriteLine("четверг");
-            }
-            if (day==5)
-            {
-                Console.WriteLine("пятница");
-            }
-            if (day == 6)
-            {
-                Console.WriteLine("суббота");
-            }
-            if (day == 7) 
-            {
-                Console.WriteLine("воскресенье");
-            }
-            if (day>7)
-            {
-                Console.WriteLine("неподходящее значение");
+                case 1:
+                    Console.WriteLine("Понедельник");
+                    break;
+                case 2:
+                    Console.WriteLine("Вторник");
+                    break;
+                case 3:
+                    Console.WriteLine("Среда");
+                    break;
+                case 4:
+                    Console.WriteLine("Четверг");
+                    break;
+                case 5:
+                    Console.WriteLine("Пятница");
+                    break;
+                case 6:
+                    Console.WriteLine("Суббота");
+                    break;
+                case 7:
+                    Console.WriteLine("Воскресенье");
+                    break;
+                default:
+                    Console.WriteLine("Неверное значение");
+                    break;
             }
 
             //1.4
-            Console.WriteLine("1.4");
+            Console.WriteLine("1.4 \n введите номер карты: ");
+
             try
             {
                 int karta = Convert.ToInt32(Console.ReadLine());
-                if (karta >= 6 && karta <= 14)
-                {
-                    if (karta == 11)
-                    {
-                        Console.WriteLine("валет");
-                    }
-                    if (karta == 12)
-                    {
-                        Console.WriteLine("дама");
-                    }
-                    if (karta==13)
-                    {
-                        Console.WriteLine("король");
-                    }
-                    if (karta==14)
-                    {
-                        Console.WriteLine("туз");
-                    }
-                    Console.WriteLine($"Карта- {karta}");
-
-                }
+                if (karta < 6 || karta > 14)
+                { throw new Exception("\nТакой карты нет\n"); }
                 else
-                {
-                    throw new Exception("Вы ввели неправильное число");
-                }
+                { Console.WriteLine((Cards)karta); }
             }
-            catch (FormatException error)
+
+            catch (Exception ex)
             {
-                Console.WriteLine(error);
-            }
-            catch (Exception error)
-            {
-                Console.WriteLine(error);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
-                Console.WriteLine("блок завершён");
-            }
-            
 
-            
+            }
+
             //1.5
             Console.WriteLine("\n 1.5 \n Введите расстояние от Земли 1-10км: ");
             d = Convert.ToInt32(Console.ReadLine());
